@@ -1,0 +1,10 @@
+service: "service:XTTS"
+labels:
+  owner: bentoml-team
+  project: gallery
+include:
+  - "*.py"
+  - "*.wav"
+python:
+  packages:
+    - TTS

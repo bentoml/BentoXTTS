@@ -1,0 +1,2 @@
+bentoml>=1.2.0a0
+TTS
