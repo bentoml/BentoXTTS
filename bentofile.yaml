@@ -4,7 +4,8 @@ labels:
   project: gallery
 include:
   - "*.py"
-  - "*.wav"
+  - "female.wav"
 python:
-  packages:
-    - TTS
+  requirements_txt: requirements.txt
+env:
+  COQUI_TOS_AGREED: 1
