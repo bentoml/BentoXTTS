@@ -17,7 +17,7 @@ sample_input_data = {
 
 @bentoml.service(
     resources={
-        "GPU": 1,
+        "gpu": 1,
         "memory": "8Gi",
     },
     traffic={"timeout": 300},
