@@ -23,12 +23,8 @@ sample_input_data = {
     traffic={"timeout": 300},
 )
 class XTTS:
-    
     def __init__(self) -> None:
-
-        self.gpu = True if torch.cuda.is_available() else False
-        self.tts = TTS(MODEL_ID, gpu=self.gpu)
-
+        self.tts = TTS(MODEL_ID, gpu=torch.cuda.is_available())
     
     @bentoml.api
     def synthesize(
@@ -45,5 +41,4 @@ class XTTS:
             language=lang,
             split_sentences=True,
         )
-
         return Path(output_path)
