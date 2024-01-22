@@ -7,5 +7,6 @@ include:
   - "female.wav"
 python:
   requirements_txt: requirements.txt
-env:
-  COQUI_TOS_AGREED: 1
+envs:
+  - name: "COQUI_TOS_AGREED"
+    value: 1
