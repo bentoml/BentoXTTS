@@ -34,10 +34,14 @@ class XTTS:
             lang: str = sample_input_data["language"],
     ) -> Path:
         output_path = os.path.join(context.temp_dir, "output.wav")
+        sample_path = "./female.wav"
+        if not os.path.exists(sample_path):
+            sample_path = "./src/female.wav"
+
         self.tts.tts_to_file(
             text,
             file_path=output_path,
-            speaker_wav='./female.wav',
+            speaker_wav=sample_path,
             language=lang,
             split_sentences=True,
         )
