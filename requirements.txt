@@ -115,7 +115,7 @@ opentelemetry-sdk==1.20.0
 opentelemetry-semantic-conventions==0.41b0
 opentelemetry-util-http==0.41b0
 packaging==23.2
-pandas==1.5.3
+pandas
 pathspec==0.12.1
 pillow==10.2.0
 pip-requirements-parser==32.0.1
