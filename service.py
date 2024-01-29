@@ -33,7 +33,7 @@ class XTTS:
             text: str = sample_input_data["text"],
             lang: str = sample_input_data["language"],
     ) -> Path:
-        output_path = os.path.join(context.directory, "output.wav")
+        output_path = os.path.join(context.temp_dir, "output.wav")
         self.tts.tts_to_file(
             text,
             file_path=output_path,
