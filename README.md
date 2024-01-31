@@ -9,6 +9,8 @@ This project demonstrates how to build a text-to-speech application using BentoM
 ## Install dependencies
 
 ```bash
+git clone https://github.com/bentoml/BentoXTTS.git
+cd BentoXTTS
 pip install -r requirements.txt
 ```
 
