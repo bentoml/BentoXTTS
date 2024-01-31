@@ -1,10 +1,10 @@
-This document demonstrates how to build an text-to-speech application using BentoML, powered by [XTTS](https://huggingface.co/coqui/XTTS-v2).
+This project demonstrates how to build a text-to-speech application using BentoML, powered by [XTTS](https://huggingface.co/coqui/XTTS-v2).
 
-## **Prerequisites**
+## Prerequisites
 
-- You have installed Python 3.8+ and `pip`. See the [Python downloads page](https://www.python.org/downloads/) to learn more.
-- You have a basic understanding of key concepts in BentoML, such as Services. We recommend you read [Quickstart](https://docs.bentoml.com/en/latest/get-started/quickstart.html) first.
-- (Optional) We recommend you create a virtual environment for dependency isolation for this project. See Installation for details.
+- You have installed Python 3.8+ and `pip`. See the [Python downloads page](https://www.python.org/downloads/) to learn more.
+- You have a basic understanding of key concepts in BentoML, such as Services. We recommend you read [Quickstart](https://docs.bentoml.com/en/1.2/get-started/quickstart.html) first.
+- (Optional) We recommend you create a virtual environment for dependency isolation for this project. See the [Conda documentation](https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html) or the [Python documentation](https://docs.python.org/3/library/venv.html) for details.
 
 ## Install dependencies
 
@@ -14,7 +14,7 @@ pip install -r requirements.txt
 
 ## Run the BentoML Service
 
-We have defined a BentoML Service in `service.py`. Run `bentoml serve` in your project directory to start the Service. You may also set environment variable `COQUI_TOS_AGREED` to 1 to accept coqui's TOS.
+We have defined a BentoML Service in `service.py`. Run `bentoml serve` in your project directory to start the Service. You may also set the environment variable `COQUI_TTS_AGREED=1` to agree to the terms of Coqui TTS.
 
 ```python
 $ COQUI_TOS_AGREED=1 bentoml serve .
@@ -26,7 +26,7 @@ $ COQUI_TOS_AGREED=1 bentoml serve .
  > Using model: xtts
 ```
 
-The server is now active at [http://0.0.0.0:3000](http://0.0.0.0:3000/). You can interact with it using Swagger UI or in other different ways.
+The server is now active at [http://localhost:3000](http://localhost:3000/). You can interact with it using the Swagger UI or in other different ways.
 
 CURL
 
@@ -41,16 +41,30 @@ curl -X 'POST' \
 }' -o output.wav
 ```
 
-## Deploy the application to BentoCloud
+BentoML client
 
-After the Service is ready, you can deploy the application to BentoCloud for better management and scalability. A configuration YAML file (`bentofile.yaml`) is used to define the build options for your application. It is used for packaging your application into a Bento. See [Bento build options](https://docs.bentoml.com/en/latest/concepts/bento.html#bento-build-options) to learn more.
+This client returns the audio file as a `Path` object. You can use it to access or process the file. See [Clients](https://docs.bentoml.com/en/1.2/guides/clients.html) for details.
 
-Make sure you have logged in to BentoCloud, then run the following command in your project directory to deploy the application to BentoCloud. Under the hood, this commands automatically builds a Bento, push the Bento to BentoCloud, and deploy it on BentoCloud.
+```python
+import bentoml
+
+with bentoml.SyncHTTPClient("http://localhost:3000") as client:
+        result = client.synthesize(
+            text="It took me quite a long time to develop a voice and now that I have it I am not going to be silent.",
+            lang="en"
+        )
+```
+
+## Deploy to production
+
+After the Service is ready, you can deploy the application to BentoCloud for better management and scalability. A YAML configuration file (`bentofile.yaml`) is used to define the build options and package your application into a Bento. See [Bento build options](https://docs.bentoml.com/en/latest/concepts/bento.html#bento-build-options) to learn more.
+
+Make sure you have [logged in to BentoCloud](https://docs.bentoml.com/en/1.2/bentocloud/how-tos/manage-access-token.html), then run the following command in your project directory to deploy the application to BentoCloud.
 
 ```bash
 bentoml deploy .
 ```
 
-**Note**: Alternatively, you can manually build the Bento, containerize the Bento as a Docker image, and deploy it in any Docker-compatible environment. See [Docker deployment](https://docs.bentoml.org/en/latest/concepts/deploy.html#docker) for details.
-
 Once the application is up and running on BentoCloud, you can access it via the exposed URL.
+
+**Note**: Alternatively, you can use BentoML to generate a [Docker image](https://docs.bentoml.com/en/1.2/guides/containerization.html) for a custom deployment.
