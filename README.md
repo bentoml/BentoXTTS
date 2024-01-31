@@ -32,7 +32,7 @@ CURL
 
 ```bash
 curl -X 'POST' \
-  'http://0.0.0.0:3000/synthesize' \
+  'http://localhost:3000/synthesize' \
   -H 'accept: */*' \
   -H 'Content-Type: application/json' \
   -d '{
