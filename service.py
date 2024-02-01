@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import os
+import typing as t
 from pathlib import Path
 
 import torch
@@ -32,7 +33,7 @@ class XTTS:
             context: bentoml.Context,
             text: str = sample_input_data["text"],
             lang: str = sample_input_data["language"],
-    ) -> Path:
+    ) -> t.Annotated[Path, bentoml.validators.ContentType('audio/*')]:
         output_path = os.path.join(context.temp_dir, "output.wav")
         sample_path = "./female.wav"
         if not os.path.exists(sample_path):
