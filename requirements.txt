@@ -1,4 +1,4 @@
-bentoml>=1.2.0rc1
+bentoml>=1.2.2,<2
 transformers==4.36.2
 triton==2.1.0
 TTS==0.22.0

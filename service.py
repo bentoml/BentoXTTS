@@ -4,9 +4,6 @@ import os
 import typing as t
 from pathlib import Path
 
-import torch
-from TTS.api import TTS
-
 import bentoml
 
 MODEL_ID = "tts_models/multilingual/multi-dataset/xtts_v2"
@@ -25,6 +22,9 @@ sample_input_data = {
 )
 class XTTS:
     def __init__(self) -> None:
+        import torch
+        from TTS.api import TTS
+
         self.tts = TTS(MODEL_ID, gpu=torch.cuda.is_available())
     
     @bentoml.api
