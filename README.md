@@ -1,4 +1,10 @@
-This project demonstrates how to build a text-to-speech application using BentoML, powered by [XTTS](https://huggingface.co/coqui/XTTS-v2).
+<div align="center">
+    <h1 align="center">Serving XTTS with BentoML</h1>
+</div>
+
+[XTTS](https://huggingface.co/coqui/XTTS-v2) is a voice generation model that lets you clone voices into different languages by using just a quick 6-second audio clip.
+
+This is a BentoML example project, demonstrating how to build a text-to-speech inference API server using the XTTS model. See [here](https://github.com/bentoml/BentoML?tab=readme-ov-file#%EF%B8%8F-what-you-can-build-with-bentoml) for a full list of BentoML example projects.
 
 ## Prerequisites
 
@@ -43,7 +49,7 @@ curl -X 'POST' \
 }' -o output.wav
 ```
 
-BentoML client
+Python client
 
 This client returns the audio file as a `Path` object. You can use it to access or process the file. See [Clients](https://docs.bentoml.com/en/latest/guides/clients.html) for details.
 
@@ -57,11 +63,13 @@ with bentoml.SyncHTTPClient("http://localhost:3000") as client:
         )
 ```
 
-## Deploy to production
+For detailed explanations of the Service code, see [XTTS: Text to speech](https://docs.bentoml.com/en/latest/use-cases/audio/xtts.html).
 
-After the Service is ready, you can deploy the application to BentoCloud for better management and scalability. A YAML configuration file (`bentofile.yaml`) is used to define the build options and package your application into a Bento. See [Bento build options](https://docs.bentoml.com/en/latest/concepts/bento.html#bento-build-options) to learn more.
+## Deploy to BentoCloud
 
-Make sure you have [logged in to BentoCloud](https://docs.bentoml.com/en/latest/bentocloud/how-tos/manage-access-token.html), then run the following command in your project directory to deploy the application to BentoCloud.
+After the Service is ready, you can deploy the application to BentoCloud for better management and scalability. [Sign up](https://www.bentoml.com/) if you haven't got a BentoCloud account.
+
+Make sure you have [logged in to BentoCloud](https://docs.bentoml.com/en/latest/bentocloud/how-tos/manage-access-token.html), then run the following command to deploy it.
 
 ```bash
 bentoml deploy .
@@ -69,4 +77,4 @@ bentoml deploy .
 
 Once the application is up and running on BentoCloud, you can access it via the exposed URL.
 
-**Note**: Alternatively, you can use BentoML to generate a [Docker image](https://docs.bentoml.com/en/latest/guides/containerization.html) for a custom deployment.
+**Note**: For custom deployment in your own infrastructure, use [BentoML to generate an OCI-compliant image](https://docs.bentoml.com/en/latest/guides/containerization.html).
