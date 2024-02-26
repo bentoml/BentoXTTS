@@ -1,15 +1,10 @@
 <div align="center">
-    <h1 align="center">BentoXTTS</h1>
-    <br>
-    <strong>Convert written text into spoken words<br></strong>
-    <i>Powered by BentoML 🍱</i>
-    <br>
+    <h1 align="center">Serving XTTS with BentoML</h1>
 </div>
-<br>
 
-Text-to-speech (TTS) technology translates written text into spoken words, combining linguistic analysis and digital processing to mimic human speech. TTS technology is widely used to enhance accessibility for those with visual impairments or reading difficulties, support language learning, and improve user interactions in customer service through IVR systems and virtual assistants.
+[XTTS](https://huggingface.co/coqui/XTTS-v2) is a voice generation model that lets you clone voices into different languages by using just a quick 6-second audio clip.
 
-This project demonstrates how to build a text-to-speech application using BentoML, powered by [XTTS](https://huggingface.co/coqui/XTTS-v2), a voice generation model that lets you clone voices into different languages.
+This is a BentoML example project, demonstrating how to build a text-to-speech inference API server using the XTTS model. See [here](https://github.com/bentoml/BentoML?tab=readme-ov-file#%EF%B8%8F-what-you-can-build-with-bentoml) for a full list of BentoML example projects.
 
 ## Prerequisites
 
@@ -67,6 +62,8 @@ with bentoml.SyncHTTPClient("http://localhost:3000") as client:
             lang="en"
         )
 ```
+
+For detailed explanations of the Service code, see [XTTS: Text to speech](https://docs.bentoml.com/en/latest/use-cases/audio/xtts.html).
 
 ## Deploy to BentoCloud
 
