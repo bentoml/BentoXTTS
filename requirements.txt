@@ -1,4 +1,4 @@
 bentoml>=1.2.2,<2
-transformers==4.36.2
+transformers==4.38.0
 triton==2.1.0; sys_platform == "linux"
 TTS==0.22.0
