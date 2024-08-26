@@ -10,3 +10,5 @@ python:
 envs:
   - name: "COQUI_TOS_AGREED"
     value: 1
+docker:
+  python_version: 3.11
