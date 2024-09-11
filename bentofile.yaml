@@ -7,6 +7,7 @@ include:
   - "female.wav"
 python:
   requirements_txt: requirements.txt
+  lock_packages: false
 envs:
   - name: "COQUI_TOS_AGREED"
     value: 1
