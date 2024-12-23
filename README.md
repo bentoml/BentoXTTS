@@ -4,7 +4,7 @@
 
 [XTTS](https://huggingface.co/coqui/XTTS-v2) is a voice generation model that lets you clone voices into different languages by using just a quick 6-second audio clip.
 
-This is a BentoML example project, demonstrating how to build a text-to-speech inference API server using the XTTS model. See [here](https://github.com/bentoml/BentoML?tab=readme-ov-file#%EF%B8%8F-what-you-can-build-with-bentoml) for a full list of BentoML example projects.
+This is a BentoML example project, demonstrating how to build a text-to-speech inference API server using the XTTS model. See [here](https://docs.bentoml.com/en/latest/examples/overview.html) for a full list of BentoML example projects.
 
 ## Install dependencies
 
