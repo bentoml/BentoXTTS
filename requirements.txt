@@ -1,4 +1,4 @@
 bentoml>=1.3.5,<2
-transformers==4.44.2
-torch<2.5
+transformers==5.0.0rc3
+torch<2.13
 tts==0.22.0
